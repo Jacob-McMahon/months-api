@@ -82,7 +82,7 @@ const month = {
 }
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + 'index.html')
+    res.sendFile(__dirname + '/index.html')
 })
 
 app.get('/api/:boop', (req,res) => {
@@ -94,8 +94,8 @@ app.get('/api/:boop', (req,res) => {
     }
 })
 
-app.post('/change-url', (req,res) => {
-    
+app.get('/api/month', (req,res) => {
+    console.log('one step forward')
 })
 
 
