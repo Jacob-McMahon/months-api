@@ -7,61 +7,61 @@ app.use(cors())
 //object that makes the API
 
 const month = {
-    January: {
+    january: {
         days: 31,
         weeks:[1,2,3,4,5],
         season: 'winter',
         holidays:{names:["New Year's Day","Epiphany"]}
         },
-    February: {
+    february: {
         days: 28,
         weeks:[5,6,7,8,9],
         season: 'winter',
         holidays:{names: ''}
     },
-    March: {
+    march: {
         days: 31,
         height: [10,11,12,13,14],
         season: ['winter','spring'],
         holidays:{names:""}
     },
-    April: {
+    asyncpril: {
         days: 30,
         weekst: [14,15,16,17,18],
         season: 'spring',
         holidays:{names:["Good Friday", "Easter Monday"]}
     },
-    May: {
+    may: {
         days: 31,
         weeks: [19,20,21,22],
         season: 'spring',
         holidays:{names:["Labour Day", "Ascension Day"] } 
     },
-    June: {
+    june: {
         days: 30,
         weeks: [22,23,24,25,26,27],
         season: ['spring', 'summer'],
         holidays:{names:["Midsummer's Eve", "Midsummer"]}
     },
-    July: {
+    july: {
         days: 31,
         weeks: [27,28,29,30,31],
         season: 'summer',
         holidays:{names:""}        
     },
-    August: {
+    august: {
         days: 31,
         weeks: [31,32,33,34,35],
         season: 'summer',
         holidays:{names:""}        
     },
-    September: {
+    september: {
         days: 30,
         weeks: [35,36,37,38,39],
         season: ['summer', 'autumn'],
         holidays:{names:""}        
     },
-    October: {
+    october: {
         days: 30,
         weeks: [39,40,41,42,43],
         season: 'autumn',
@@ -73,11 +73,17 @@ const month = {
         season: 'autumn',
         holidays:{names:"All saints' day"}        
     },
-    December: {
+    december: {
         days: 31,
         weeks: [48,49,50,51,52],
         season: ['autumn', 'winter'],
         holidays:{names:["Christmas Eve", "Christmas Day", "New Year's Eve"]}        
+    },
+    unknown: {
+        days: 0,
+        weeks: [],
+        season: [],
+        holidays:{names:{}}
     }
 }
 
@@ -85,19 +91,15 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
 
-app.get('/api/:boop', (req,res) => {
-    const choice = req.params.boop.toLowerCase()
-    if(month[choice]){
-        res.json(month[choice])
+app.get('/api/:choice', (req,res) => {
+    const cho = req.params.choice.toLowerCase()
+    if(month[cho]){
+        res.json(month[cho])
     }else{
-        res.json(month[unknown])
+        console.log('oops')
+       // res.json(month[unknown])
     }
 })
-
-app.get('/api/month', (req,res) => {
-    console.log('one step forward')
-})
-
 
 
 app.listen(PORT, (req,res) => {
