@@ -92,9 +92,9 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/:choice', (req,res) => {
-    const cho = req.params.choice.toLowerCase()
-    if(month[cho]){
-        res.json(month[cho])
+    const choice = req.params.choice.toLowerCase()
+    if(month[choice]){
+        res.json(month[choice])
     }else{
         console.log('oops')
        // res.json(month[unknown])
