@@ -99,6 +99,7 @@ app.get('/api/:choice', (req,res) => {
         console.log('oops')
        // res.json(month[unknown])
     }
+    res.render(`/api/${Choice}`)
 })
 
 
